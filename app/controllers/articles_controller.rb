@@ -33,6 +33,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = set_article
+    @article.user = User.first
     if @article.update(article_params)
       flash[:notice] = "Article was updated"
       redirect_to article_path(@article)
