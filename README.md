@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+My First rails project 
 
-Things you may want to cover:
+Feature:
 
-* Ruby version
+* Create Article
 
-* System dependencies
+* Update Article
 
-* Configuration
+* Read Article
 
-* Database creation
+* Delete Article
 
-* Database initialization
+* Signup
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Signin
