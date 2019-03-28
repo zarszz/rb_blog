@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:edit, :update, :show, :destroy]
-  
+  before_action :set_article, only: %i[edit update show destroy]
+
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   def create
     # render plain: params[:article].inspect
     @article = Article.new(article_params)
+    @article.user = User.first
     @article.save
     if @article.save
       flash[:notice] = 'Article was sucessfully created'
@@ -33,12 +34,11 @@ class ArticlesController < ApplicationController
 
   def update
     @article = set_article
-    @article.user = User.first
     if @article.update(article_params)
-      flash[:notice] = "Article was updated"
+      flash[:notice] = 'Article was updated'
       redirect_to article_path(@article)
     else
-      flash[:notice] = "Article was not updated"
+      flash[:notice] = 'Article was not updated'
       render 'edit'
     end
   end
@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = set_article
     @article.destroy
-    flash[:notice] = "Article was successfully deleted ! "
+    flash[:notice] = 'Article was successfully deleted ! '
     redirect_to articles_path
   end
 

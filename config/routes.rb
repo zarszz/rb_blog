@@ -4,5 +4,11 @@ Rails.application.routes.draw do
 
   get 'about', to: 'pages#about'
 
+  get 'signup', to: 'users#new'
+  post 'users', to: 'users#create'
+  post 'login', to: 'sessions#new'
+  delete 'logout', to: 'sessions#destroy'
+
+
   resources :articles
 end
