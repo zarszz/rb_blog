@@ -1,4 +1,4 @@
-# README
+# rails-blog
 
 My First rails project 
 
