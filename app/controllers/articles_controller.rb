@@ -24,6 +24,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def create_new_article
+    if current_user.present?
+      render 'new'
+    else
+      flash[:notice] = 'You have not logged yet !'
+  end
+
   def show
     @article = set_article
   end
